@@ -1,4 +1,3 @@
-import 'package:audioplayer/audioplayer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -19,9 +18,7 @@ class MyApp extends StatelessWidget {
 }
 
 class NoissMaker extends StatelessWidget {
-
-  AudioPlayer audioPlugin = AudioPlayer();
-
+  AudioCache
   static const String _buttonText = 'Make Some Noiss';
   static const double _iconSize = 32;
   @override
@@ -45,6 +42,6 @@ class NoissMaker extends StatelessWidget {
   }
 
   void makeNoiss() {
-    SystemSound.play(SystemSoundType.click);
+    audioPlugin.play('noiss.mp3');
   }
 }
