@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_sound/flutter_sound_player.dart';
-import 'dart:async';
+import 'package:audioplayers/audio_cache.dart';
+import 'package:audioplayers/audioplayers.dart';
 
 void main() => runApp(MyApp());
 
@@ -12,17 +11,12 @@ class MyApp extends StatelessWidget {
       title: _title,
       theme: ThemeData(brightness: Brightness.dark),
       home: Scaffold(
-        appBar: AppBar(title: const Text(_title)),
-        body: NoissMaker(),
-      ),
+          appBar: AppBar(title: const Text(_title)), body: NoissMaker()),
     );
   }
 }
 
 class NoissMaker extends StatelessWidget {
-
-  FlutterSoundPlayer soundPlayer = new FlutterSoundPlayer();
-
   static const String _buttonText = 'Make Some Noiss';
   static const double _iconSize = 32;
   @override
@@ -45,15 +39,11 @@ class NoissMaker extends StatelessWidget {
     );
   }
 
-
-  Future<void> makeNoiss() async {
-    final fileUri = 'noiss.mp3';
-    String result = await soundPlayer.startPlayer(
-        fileUri,
-        whenFinished: () {
-          soundPlayer.stopPlayer();
-        }
-    );
-    soundPlayer.release();
+  void makeNoiss() {
+    Future<AudioPlayer> playLocalAsset() async {
+        AudioCache cache = new AudioCache();
+        return await cache.play("hello.mp3");
+    }
+    playLocalAsset();
   }
 }
