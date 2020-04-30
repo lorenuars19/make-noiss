@@ -1,4 +1,6 @@
+import 'package:audioplayer/audioplayer.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 void main() => runApp(MyApp());
 
@@ -18,6 +20,8 @@ class MyApp extends StatelessWidget {
 
 class NoissMaker extends StatelessWidget {
 
+  AudioPlayer audioPlugin = AudioPlayer();
+
   static const String _buttonText = 'Make Some Noiss';
   static const double _iconSize = 32;
   @override
@@ -28,21 +32,19 @@ class NoissMaker extends StatelessWidget {
           color: Colors.purpleAccent,
           shape: CircleBorder(),
         ),
-      child: IconButton(
-        alignment: Alignment.center,
-         icon: const Icon(Icons.volume_up, size: _iconSize),
-         color: Colors.white,
-         tooltip: _buttonText,
-         onPressed: () {
-           makeNoiss();
-         }
-         ),
+        child: IconButton(
+            alignment: Alignment.center,
+            icon: const Icon(Icons.volume_up, size: _iconSize),
+            color: Colors.white,
+            tooltip: _buttonText,
+            onPressed: () {
+              makeNoiss();
+            }),
       ),
     );
   }
 
   void makeNoiss() {
-    // TODO make some noiss
+    SystemSound.play(SystemSoundType.click);
   }
 }
-
