@@ -7,13 +7,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: _title,
-      theme: ThemeData(
-        brightness: Brightness.dark,
-      ),
+      theme: ThemeData(brightness: Brightness.dark),
       home: Scaffold(
-        appBar: AppBar(
-          title: const Text(_title),
-        ),
+        appBar: AppBar(title: const Text(_title)),
         body: NoissMaker(),
       ),
     );
