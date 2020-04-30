@@ -6,7 +6,7 @@ class MyApp extends StatelessWidget {
   static const String _title = 'Make Some Noiss';
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: _title,
       theme: ThemeData(
         brightness: Brightness.dark,
       ),
