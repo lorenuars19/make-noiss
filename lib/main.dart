@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_sound/flutter_sound_player.dart';
+import 'dart:async';
 
 void main() => runApp(MyApp());
 
@@ -18,7 +20,9 @@ class MyApp extends StatelessWidget {
 }
 
 class NoissMaker extends StatelessWidget {
-  AudioCache
+
+  FlutterSoundPlayer soundPlayer = new FlutterSoundPlayer();
+
   static const String _buttonText = 'Make Some Noiss';
   static const double _iconSize = 32;
   @override
@@ -41,7 +45,15 @@ class NoissMaker extends StatelessWidget {
     );
   }
 
-  void makeNoiss() {
-    audioPlugin.play('noiss.mp3');
+
+  Future<void> makeNoiss() async {
+    final fileUri = 'noiss.mp3';
+    String result = await soundPlayer.startPlayer(
+        fileUri,
+        whenFinished: () {
+          soundPlayer.stopPlayer();
+        }
+    );
+    soundPlayer.release();
   }
 }
