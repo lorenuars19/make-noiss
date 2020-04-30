@@ -17,6 +17,7 @@ class MyApp extends StatelessWidget {
 }
 
 class NoissMaker extends StatelessWidget {
+  AudioCache cache = new AudioCache();
   static const String _buttonText = 'Make Some Noiss';
   static const double _iconSize = 32;
   @override
@@ -41,8 +42,7 @@ class NoissMaker extends StatelessWidget {
 
   void makeNoiss() {
     Future<AudioPlayer> playLocalAsset() async {
-        AudioCache cache = new AudioCache();
-        return await cache.play("hello.mp3");
+      return await cache.play("noiss.mp3");
     }
     playLocalAsset();
   }
