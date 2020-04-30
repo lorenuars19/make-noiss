@@ -21,20 +21,27 @@ class MyApp extends StatelessWidget {
 }
 
 class NoissMaker extends StatelessWidget {
-  @override
+
   static const String _buttonText = 'Make Some Noiss';
-  static const double _iconSize = 256.0;
+  static const double _iconSize = 32;
+  @override
   Widget build(BuildContext context) {
     return Center(
-      widthFactor: _iconSize,
-      heightFactor: _iconSize,
-       child: IconButton(
-          icon: const Icon(Icons.volume_up, size: _iconSize),
-          tooltip: _buttonText,
-          onPressed: () {
-            makeNoiss();
-          }
+      child: Ink(
+        decoration: const ShapeDecoration(
+          color: Colors.purpleAccent,
+          shape: CircleBorder(),
         ),
+      child: IconButton(
+        alignment: Alignment.center,
+         icon: const Icon(Icons.volume_up, size: _iconSize),
+         color: Colors.white,
+         tooltip: _buttonText,
+         onPressed: () {
+           makeNoiss();
+         }
+         ),
+      ),
     );
   }
 
